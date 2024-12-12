@@ -1,0 +1,69 @@
+﻿<Window x:Class="PelículasDeTerrorModoDesconectado.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PelículasDeTerrorModoDesconectado"
+        xmlns:vm="clr-namespace:PelículasDeTerrorModoDesconectado.ViewModels"
+        xmlns:v="clr-namespace:PelículasDeTerrorModoDesconectado.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:PeliculasDeTerrorViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <v:PrincipalView/>
+
+        <v:AgregarView>
+            <v:AgregarView.Style>
+                <Style TargetType="UserControl">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Vista}" Value="{x:Static vm:Vistas.Agregar}">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </v:AgregarView.Style>
+        </v:AgregarView>
+
+        <v:EliminarView>
+            <v:EliminarView.Style>
+                <Style TargetType="UserControl">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Vista}" Value="{x:Static vm:Vistas.Eliminar}">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </v:EliminarView.Style>
+        </v:EliminarView>
+
+        <v:EditarView>
+            <v:EditarView.Style>
+                <Style TargetType="UserControl">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Vista}" Value="{x:Static vm:Vistas.Editar}">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </v:EditarView.Style>
+        </v:EditarView>
+
+        <v:DetallesView>
+            <v:DetallesView.Style>
+                <Style TargetType="UserControl">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Vista}" Value="{x:Static vm:Vistas.Detalles}">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </v:DetallesView.Style>
+        </v:DetallesView>
+    </Grid>
+</Window>
